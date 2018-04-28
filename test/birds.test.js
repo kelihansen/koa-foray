@@ -59,4 +59,15 @@ describe('Bird API', () => {
                 assert.deepEqual(body, hummingbird);                
             });
     });
+
+    it('deletes a bird', () => {
+        return request.delete(`/birds/${crow._id}`)
+            .then(({ body }) => {
+                assert.ok(body.deleted);
+                return request.get(`/birds/${crow._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, {});
+            });
+    });
 });
