@@ -49,4 +49,14 @@ describe('Bird API', () => {
                 assert.deepEqual(body, crow);
             });
     });
+
+    it('updates a bird', () => {
+        hummingbird.colors = ['magenta', 'gray', 'red'];
+
+        return request.put(`/birds/${hummingbird._id}`)
+            .send(hummingbird)
+            .then(({ body }) => {
+                assert.deepEqual(body, hummingbird);                
+            });
+    });
 });
