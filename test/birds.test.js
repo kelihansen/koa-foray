@@ -11,6 +11,11 @@ describe('Bird API', () => {
         colors: ['magenta', 'gray', 'red']        
     };
 
+    let crow = {
+        scientificName: 'Corvus brachyrhynchos',
+        colors: ['black']
+    };
+
     it('saves a bird', () => {
         return request.post('/birds')
             .send(hummingbird)
@@ -23,6 +28,18 @@ describe('Bird API', () => {
                     _id, __v
                 });
                 hummingbird = body;
+            });
+    });
+
+    it('gets all birds', () => {
+        return request.post('/birds')
+            .send(crow)
+            .then(({ body }) => {
+                crow = body;
+                return request.get('/birds')
+                    .then(({ body }) => {
+                        assert.deepEqual(body, [hummingbird, crow]);
+                    });
             });
     });
 });
