@@ -70,4 +70,11 @@ describe('Bird API', () => {
                 assert.deepEqual(body, {});
             });
     });
+
+    it('returns 404 on get of non-existent id', () => {
+        return request.get(`/birds/${crow._id}`)
+            .then(({ status }) => {
+                assert.strictEqual(status, 404);
+            });
+    });
 });
