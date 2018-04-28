@@ -17,4 +17,10 @@ describe('Bird model', () => {
         assert.isUndefined(hummingbird.validateSync());
     });
 
+    it('has a required field', () => {
+        const bird = new Bird({});
+        const { errors } = bird.validateSync();
+        assert.equal(errors.scientificName.kind, 'required');
+    });
+
 });
