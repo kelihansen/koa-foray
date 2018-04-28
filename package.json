@@ -1,0 +1,40 @@
+{
+  "name": "koa-foray",
+  "version": "1.0.0",
+  "description": "How does Koa differ from Express?",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint lib test",
+    "pretest": "npm run lint",
+    "test:mocha": "mocha",
+    "test": "npm run test:mocha",
+    "test:watch": "nodemon --exec 'npm run test:mocha'",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelihansen/koa-foray.git"
+  },
+  "keywords": [],
+  "author": "Keli Hansen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kelihansen/koa-foray/issues"
+  },
+  "homepage": "https://github.com/kelihansen/koa-foray#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.0"
+  }
+}
