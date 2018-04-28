@@ -8,7 +8,7 @@ describe('Bird API', () => {
 
     let hummingbird = {
         scientificName: 'Calypte anna',
-        colors: ['magenta', 'gray', 'red']        
+        colors: ['red', 'gray', 'red']        
     };
 
     let crow = {
@@ -40,6 +40,13 @@ describe('Bird API', () => {
                     .then(({ body }) => {
                         assert.deepEqual(body, [hummingbird, crow]);
                     });
+            });
+    });
+
+    it('gets a bird by id', () => {
+        return request.get(`/birds/${crow._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, crow);
             });
     });
 });
